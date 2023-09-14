@@ -1,0 +1,28 @@
+import pandas as pd
+data = pd.read_csv('C:/Users/Hello/Desktop/fods/soccer.csv')
+top_goal_scorers = data.nlargest(5, 'Goals')
+top_earners = data.nlargest(5, 'Salary')
+
+average_age = data['Age'].mean()
+
+above_avg_age_players = data[data['Age'] > average_age]
+
+print("Top 5 Goal Scorers:")
+print(top_goal_scorers)
+
+print("\nTop 5 Earners:")
+print(top_earners)
+
+print("\nAverage Age of Players:", average_age)
+
+print("\nPlayers Above Average Age:")
+print(above_avg_age_players)
+
+import matplotlib.pyplot as plt
+
+position_distribution = data['Position'].value_counts()
+position_distribution.plot(kind='bar')
+plt.xlabel('Position')
+plt.ylabel('Number of Players')
+plt.title('Distribution of Players Based on Positions')
+plt.show()
